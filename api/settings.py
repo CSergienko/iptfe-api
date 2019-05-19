@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from pathlib import Path
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +24,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('IPTFE_SECRET_KEY')
+SECRET_KEY = os.getenv('IPTFE_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('IPTFE_DEBUG') or False
+DEBUG = os.getenv('IPTFE_DEBUG') or False
 
-ALLOWED_HOSTS = ['localhost', os.environ.get('IPTFE_PROD_URL'), os.environ.get('IPTFE_DEV_URL')]
+ALLOWED_HOSTS = ['localhost', os.getenv('IPTFE_PROD_URL'), os.getenv('IPTFE_DEV_URL')]
 
 
 # Application definition
